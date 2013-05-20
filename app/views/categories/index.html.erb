@@ -1,21 +1,24 @@
-<h1>Listing categories</h1>
+<div class='chose_category'>
+    <h3>请选择分类</h3>
+        <!-- <tr>
+            <th>分类名</th>
+        </tr> -->
+    <ul class="nav nav-pills nav-stacked">
+        <% @categories.each do |category| %>
+            <li>
+                <a href="javascript:void(0);"> <%= category.name %> </a>
+            </li>
+        <% end %>
+    </ul>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <br />
 
-<% @categories.each do |category| %>
-  <tr>
-    <td><%= link_to 'Show', category %></td>
-    <td><%= link_to 'Edit', edit_category_path(category) %></td>
-    <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+    <%= link_to '不在列表中？ 新建一个分类', new_category_path %>
+</div>
 
-<br />
-
-<%= link_to 'New Category', new_category_path %>
+<script type='text/javascript'>
+    $(function() {
+        window.router = new Life.Routers.CategoriesRouter({posts: <%= @posts.to_json.html_safe -%>});
+        Backbone.history.start()
+    });
+</script>
