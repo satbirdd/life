@@ -1,7 +1,18 @@
 Life::Application.routes.draw do
   resources :categories
 
+  match "/application.manifest" => Rails::Offline
+  Rack::Offline.configure do
+    cache "assets/application.js"
+    cache "assets/application.css"
 
+    public_path = Pathname.new(Rails.public_path)
+    Dir[public_path.join("assets/*.js")].each do |file|
+      cache file.relative_path_from(public_path)
+    end
+
+    network "/"
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

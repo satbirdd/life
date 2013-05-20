@@ -1,5 +1,8 @@
 class Life.Routers.CategoriesRouter extends Backbone.Router
-  initialize: (options) ->
+	initialize: (options) ->
+		super(options)
 
-  routes:
-  
+	routes:
+		"categories/:id" : "record"
+
+	record: (id) ->

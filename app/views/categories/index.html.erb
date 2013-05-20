@@ -6,7 +6,7 @@
     <ul class="nav nav-pills nav-stacked">
         <% @categories.each do |category| %>
             <li>
-                <a href="javascript:void(0);"> <%= category.name %> </a>
+                <a href="#categories/<%= category.id %>"> <%= category.name %> </a>
             </li>
         <% end %>
     </ul>
@@ -18,7 +18,7 @@
 
 <script type='text/javascript'>
     $(function() {
-        window.router = new Life.Routers.CategoriesRouter({posts: <%= @posts.to_json.html_safe -%>});
+        window.router = new Life.Routers.CategoriesRouter({categories: <%= @categories.to_json.html_safe -%>});
         Backbone.history.start()
     });
 </script>

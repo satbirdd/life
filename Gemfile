@@ -8,7 +8,8 @@ gem 'rails', '3.2.13'
 
 gem 'sqlite3'
 
-
+# gem 'assets_offline'
+gem 'rack-offline'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
